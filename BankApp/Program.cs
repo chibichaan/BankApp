@@ -102,6 +102,7 @@ static bool AuthorizationMenu(Guid customerId)
     }
 }
 
+/// показывает все счета
 static void ToOutPutAllAccountsNumbers(Guid customerId)
 {
     var acInfo = new AccountServices();
@@ -120,6 +121,7 @@ static void ToOutPutAllAccountsNumbers(Guid customerId)
     }
 }
 
+/// показывает счет по его номеру
 static void ToOutPutAccountByNumber(Guid customerId)
 {
     var accInfo = new AccountServices();
@@ -143,6 +145,7 @@ static void ToOutPutAccountByNumber(Guid customerId)
     }
 }
 
+/// взять кредит
 static void ToTakeACredit(Guid customerId)
 {
     var acInf = new AccountServices();
@@ -180,6 +183,7 @@ static void ToTakeACredit(Guid customerId)
     }
 }
 
+/// создание счета
 static bool ToCreateAccount(Guid customerId)
 {
     var accountServ = new AccountServices();
@@ -199,6 +203,7 @@ static bool ToCreateAccount(Guid customerId)
     return true;
 }
 
+///закрытие счета
 static bool ToClosingAccount(Guid customerId)
 {
     var accountNumber = GetUserInput("Введите номер счета, на который хотите положить деньги");
@@ -233,6 +238,7 @@ static bool ToClosingAccount(Guid customerId)
     return true;
 }
 
+///регистрация
 static void ToRegister()
 {
     var regServ = new RegistrationService();
@@ -279,6 +285,7 @@ static void ToRegister()
     }
 }
 
+///авторизация
 static (bool isSuccesses, Guid? customerId) ToLogIn()
 {
     var authServ = new AuthorizationServices();
@@ -305,6 +312,7 @@ static (bool isSuccesses, Guid? customerId) ToLogIn()
     return result;
 }
 
+///пополнение счета
 static void ToTopUpAccount(Guid customerId)
 {
     var accountNumber = GetUserInput("Введите номер счета, на который хотите положить деньги");
@@ -326,6 +334,7 @@ static void ToTopUpAccount(Guid customerId)
     }
 }
 
+///снятие денег со счета
 static void ToWithdrawAccount(Guid customerId)
 {
     var accountNumber = GetUserInput("Введите номер счета, с которого хотите снять деньги");
