@@ -8,7 +8,6 @@ while (showMenu)
 {
     showMenu = MainMenu();
 }
-
 static bool MainMenu()
 {
     Console.WriteLine("Ознакомьтесь с несколькими возможными действиями:");
