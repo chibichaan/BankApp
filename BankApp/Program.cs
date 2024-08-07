@@ -3,7 +3,6 @@ using BankApp.Exceptions;
 using BankApp.Models;
 using BankApp.Services;
 
-
 bool showMenu = true;
 while (showMenu)
 {
