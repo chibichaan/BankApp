@@ -5,6 +5,11 @@ namespace BankApp.Services;
 
 public static class AuthorizationGuard
 {
+    /// <summary>
+    /// Проверка пароля
+    /// </summary>
+    /// <param name="password">вводимый пароль</param>
+    /// <exception cref="IncorrectPasswordException">Ошибка неверного пароля</exception>
     public static void CheckPassword(string password)
     {
         //онлайн работа с регул. выжарениями reg ex online

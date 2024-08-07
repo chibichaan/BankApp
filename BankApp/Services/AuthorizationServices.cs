@@ -39,6 +39,14 @@ public class AuthorizationServices
         return (customer.Password == hash, customer.Id);
     }
     
+    /// <summary>
+    /// Смена пароля
+    /// </summary>
+    /// <param name="login">логин</param>
+    /// <param name="newPassword">новый пароль</param>
+    /// <exception cref="FileNameException"></exception>
+    /// <exception cref="UserNotFoundException"></exception>
+    /// <exception cref="SamePasswordsException"></exception>
     public void ChangePassword(string login, string newPassword)
     {
         AuthorizationGuard.CheckPassword(newPassword); // проверяем новый пароль

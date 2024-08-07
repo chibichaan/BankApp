@@ -15,6 +15,21 @@ namespace BankApp.Services;
 public class RegistrationService : IRegistrationService
 { 
     private const string FILE_NAME = "customers.json";
+    
+    /// <summary>
+    /// Регистрация 
+    /// </summary>
+    /// <param name="login">логин</param>
+    /// <param name="password">пароль</param>
+    /// <param name="fName">имя</param>
+    /// <param name="lName">фамилия</param>
+    /// <param name="mName">отчество</param>
+    /// <exception cref="DuplicateLoginException"></exception>
+    /// <exception cref="FileNotFoundException"></exception>
+    /// <exception cref="InvalideLoginException"></exception>
+    /// <exception cref="InvalideNameException"></exception>
+    /// <exception cref="InvalideSurnameException"></exception>
+    /// <exception cref="InvalidePatronymicException"></exception>
     public void Register(string login, string password, string fName, string lName, string mName)
     {
         var customers = new List<Customer>();
@@ -37,8 +52,6 @@ public class RegistrationService : IRegistrationService
         
         CheckPassword(password);
         
-        //почему-то он сюда просто не проходит с точной остановы даже
-        //записывает в файл пустые строки! 
         if (string.IsNullOrWhiteSpace(login))
         {
             throw new InvalideLoginException($"Логин не может быть пустым");
@@ -142,7 +155,6 @@ public class RegistrationService : IRegistrationService
     /// <exception cref="IncorrectPasswordException">ошибка легкого пароля</exception>
     private void CheckPassword(string password)
     {
-        //онлайн работа с регул. выжарениями reg ex online
        var hasNumber = new Regex(@"[0-9]+");
        var hasUpperChar = new Regex(@"[A-Z]+");
        var hasLowerChar = new Regex(@"[a-z]+");

@@ -15,10 +15,15 @@ public class AccountServices
     private const string FILE_NAME = "customers.json";
     private const decimal MAX_CREDIT_SUM = 30000;
     
+    /// <summary>
+    /// Создание новго аккаунта
+    /// </summary>
+    /// <param name="customerId">айди пользователя</param>
+    /// <returns></returns>
+    /// <exception cref="FileNameException"></exception>
+    /// <exception cref="UserNotFoundException"></exception>
     public bool CreateAccount(Guid customerId)
     {
-        //обратиться в файл, достать пользователя, ему добавить в его коллекцию новый созданный аккаунт 
-        //затем полностью сохранить весь список пользователей
         if (!File.Exists(FILE_NAME))
         {
             throw new FileNameException("Такого файла не существует. :( ");
@@ -52,8 +57,20 @@ public class AccountServices
         return true;
     }
 
-    //при закрытии счета(у нас удаление, переименовать) проверка что нет кредитных средств
+    //при закрытии счета проверка что нет кредитных средств
     //при становлении кредита ноль - закрытие кредита - поздравить в консоль
+    
+    /// <summary>
+    /// Закрытие кредита
+    /// </summary>
+    /// <param name="customerId">айди</param>
+    /// <param name="accountNumber">номер аккаунта</param>
+    /// <returns></returns>
+    /// <exception cref="FileNameException"></exception>
+    /// <exception cref="UserNotFoundException"></exception>
+    /// <exception cref="IncorrectAccountNumberException"></exception>
+    /// <exception cref="NumberNotFoundException"></exception>
+    /// <exception cref="ClosingCreditException"></exception>
     public bool ClosingAccount(Guid customerId, string? accountNumber)
     {
         if (!File.Exists(FILE_NAME))
